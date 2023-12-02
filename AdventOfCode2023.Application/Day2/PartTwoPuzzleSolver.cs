@@ -39,7 +39,5 @@ public class PartTwoPuzzleSolver : PuzzleSolver
 
             result += highestPerColor.Values.Aggregate((a, b) => a * b);
         }
-
-        Console.WriteLine(result);
     }
 }

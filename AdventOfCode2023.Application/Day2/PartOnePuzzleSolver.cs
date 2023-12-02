@@ -47,7 +47,5 @@ public class PartOnePuzzleSolver : PuzzleSolver
                 result += gameId;
             }
         }
-
-        Console.WriteLine(result);
     }
 }

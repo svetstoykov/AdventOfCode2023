@@ -1,23 +1,28 @@
-﻿using AdventOfCode2023.Application.Day0.Interfaces;
-using AdventOfCode2023.Application.Day1;
+﻿using AdventOfCode2023.Application.Day0;
 using BenchmarkDotNet.Attributes;
 
 namespace AdventOfCode2023.Benchmark;
 
 [MemoryDiagnoser]
-[ThreadingDiagnoser]public class PuzzleSolverBenchmark
+public class PuzzleSolverBenchmark
 {
-    private IPuzzleSolver solver;
-
-    [GlobalSetup]
-    public void Setup()
-    {
-        solver = new PartOnePuzzleSolver();
-    }
-
     [Benchmark]
-    public void SolveBenchmark()
+    [ArgumentsSource(nameof(Solvers))]
+    public void PuzzleSolverExecute(PuzzleSolver solver)
     {
         solver.Solve();
+    }
+
+    public static IEnumerable<PuzzleSolver> Solvers()
+    {
+        var assembly = typeof(PuzzleSolver).Assembly;
+
+        var puzzleSolverTypes = assembly.GetTypes()
+            .Where(type => type.IsSubclassOf(typeof(PuzzleSolver)));
+
+        return puzzleSolverTypes
+            .Select(solverType => 
+                Activator.CreateInstance(solverType) as PuzzleSolver)
+            .ToList()!;
     }
 }
