@@ -1,6 +1,5 @@
-﻿
-using AdventOfCode2023.Application.Day1;
+﻿using AdventOfCode2023.Application.Day2;
 
-var solver = new PartTwoPuzzleSolver();
+var solver = new PartOnePuzzleSolver();
 
 solver.Solve();

@@ -36,4 +36,7 @@ public abstract class PuzzleSolver : IPuzzleSolver
     private string GetInputFileName() => $"Part{Part}.txt";
     
     private string GetDailyFolderName() => $"Day{Day}";
+
+    public override string ToString() 
+        => $"Day{Day}_Part{Part}";
 }

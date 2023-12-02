@@ -4,7 +4,7 @@ using AdventOfCode2023.Application.Day0;
 
 namespace AdventOfCode2023.Application.Day1;
 
-public partial class PartTwoPuzzleSolver : PuzzleSolver
+public class PartTwoPuzzleSolver : PuzzleSolver
 {
     public override int Day => 1;
 
