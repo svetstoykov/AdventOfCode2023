@@ -5,14 +5,14 @@ using BenchmarkDotNet.Attributes;
 namespace AdventOfCode2023.Benchmark;
 
 [MemoryDiagnoser]
-public class PuzzleSolverBenchmark
+[ThreadingDiagnoser]public class PuzzleSolverBenchmark
 {
     private IPuzzleSolver solver;
 
     [GlobalSetup]
     public void Setup()
     {
-        solver = new PartTwoPuzzleSolver();
+        solver = new PartOnePuzzleSolver();
     }
 
     [Benchmark]
